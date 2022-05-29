@@ -1,0 +1,11 @@
+<%= render "shared/header" %>
+<div class="contents row">
+  <div class="container">
+    <h3>新しいジャンルに興味が湧いた！！</h3>
+    <%= form_with(model: @category, local: true) do |form| %> 
+      <%= form.text_field :category_name, placeholder: "カテゴリーを投稿してね" %>
+      <%= form.submit "SEND" %>
+    <% end %>
+  </div>
+</div>
+<%= render "shared/footer" %>
