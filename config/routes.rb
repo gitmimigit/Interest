@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :posts, only: :new
   end
   resources :categories, only: :create
+  resources :blogs, only: [:index, :create, :show, :edit, :update, :destroy]
 end
