@@ -1,12 +1,14 @@
 <%= render "shared/header" %>
-<div class="contents row">
-  <div class="container">
-    <h3>新しくカテゴリーを作る！</h3>
-    <%= form_with(model: @category, local: true) do |form| %> 
-      <input name="category[user_ids][]" type="hidden" value=<%= current_user.id %>>
-      <%= form.text_field :category_name, placeholder: "カテゴリーを投稿してね" %>
-      <%= form.submit "SEND" %>
-    <% end %>
+<div class='main'>
+  <div class="contents row">
+    <div class="container">
+      <h3>新しくカテゴリーを作る！</h3>
+      <%= form_with(model: @category, local: true) do |form| %> 
+        <input name="category[user_ids][]" type="hidden" value=<%= current_user.id %>>
+        <%= form.text_field :category_name, placeholder: "カテゴリーを投稿してね" %>
+        <%= form.submit "SEND" %>
+      <% end %>
+    </div>
   </div>
 </div>
 <%= render "shared/footer" %>
