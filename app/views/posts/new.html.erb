@@ -14,7 +14,7 @@
         <h3>ブログを投稿する！</h3>
         <%= form_with(model: @blog, local: true) do |form| %> 
           <div class="blog_category">
-            <select name="room[user_ids][]">
+            <select name="category_id">
               <option value="">カテゴリーを選択してください</option>
               <% current_user.categories.each do |category| %>
                 <option value=<%= category.id %>><%= category.category_name %></option>
