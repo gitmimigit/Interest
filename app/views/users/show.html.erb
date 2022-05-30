@@ -1,0 +1,7 @@
+<%= render "shared/header" %>
+<div class="contents row">
+  <div class='post_page'>
+    <%= link_to '投稿ページへ', new_user_post_path(@user.id), class:"new_post" %>
+  </div>
+</div>
+<%= render "shared/footer" %>
