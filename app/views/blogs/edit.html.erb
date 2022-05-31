@@ -1,0 +1,28 @@
+<%= render "shared/header" %>
+<div class='main'>
+  <div class="post_body">
+    <div class="contents row">
+      <div class="container">
+        <h3>ブログを編集する</h3>
+        <%= form_with(model: @blog, local: true) do |form| %> 
+          <div class="blog_category">
+            <select name="category_id">
+              <!--<option value="">カテゴリーを選択してください</option>-->
+              <% current_user.categories.each do |category| %>
+                <option value=<%= category.id %>><%= category.category_name %></option>
+              <% end %>
+            </select>
+          </div>
+          <div class="blog_title">
+            <%= form.text_field :blog_title, placeholder: "タイトル" %>
+          </div>
+          <div class="blog_text">
+            <%= form.text_area :blog_text, placeholder: "内容" %>
+          </div>
+          <%= form.submit "SEND" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "shared/footer" %>

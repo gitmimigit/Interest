@@ -13,7 +13,11 @@
 .interest-logo {
   width: 10vw;
   margin-right: 10vw;
+  font-size: 20px;
+  line-height: 41px;
+  float: left;
 }
+
 .nav {
   font-size: 18px;
   display: flex;
@@ -33,10 +37,17 @@
   color: #333333;
   font-weight: bold;
 }
-
+.new_post {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #333333;
+  font-weight: bold;
+}
 .logout {
   text-decoration: none;
+  margin-right: 3vw;
   color: #333333;
+  font-weight: bold;
 }
 
 .login {

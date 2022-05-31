@@ -1,0 +1,23 @@
+<%= render "shared/header" %>
+<div class='main'>
+  <div class=lists_body>
+    <div class="contents row">
+      <ul class='blog-lists'>
+        <% @blog.each do |blog| %>
+        <li class='list'>
+          <%= link_to blog.blog_title, blog_path(blog.id), class: "blog" %>
+        </li>
+        <% end %>
+      </ul>
+      <ul class='favorite-lists'>
+        <%# @favorite.each do |favorite| %>
+        <li class='list'>
+          <%#= link_to favorite.favorite_name, new_user_session_path, class: "favorite" %>
+        </li>
+        <%# end %>
+      </ul>
+    </div>
+    
+  <div>
+</div>
+<%= render "shared/footer" %>

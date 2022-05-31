@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :user_categories
   has_many :categories, through: :user_categories
+  has_many :blogs
 
   validates :user_name, presence: true, length: { maximum: 8 }
 end
