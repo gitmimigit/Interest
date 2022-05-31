@@ -3,7 +3,7 @@
   <div class=lists_body>
     <div class="contents row">
       <ul class='blog-lists'>
-        <% @blpg.each do |blog| %>
+        <% @blog.each do |blog| %>
         <li class='list'>
           <%= link_to blog.blog_title, blog_path(blog.id), class: "blog" %>
         </li>

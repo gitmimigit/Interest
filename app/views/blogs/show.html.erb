@@ -1,7 +1,12 @@
 <%= render "shared/header" %>
 <div class='main'>
   <div class="contents row">
-    
+    <div class="content_blog">
+      <% if user_signed_in? && current_user.id == @blog.user_id %>
+      <% end %>
+      <p><%= @blog.blog_title %></p>
+      <p><%= @blog.blog_text %></p>
+    </div>
   </div>
 </div>
 <%= render "shared/footer" %>
