@@ -5,7 +5,7 @@
       <% if user_signed_in? && current_user.id == @blog.user_id %>
       <% end %>
       <p><%= @blog.blog_title %></p>
-      <p><%= @blog.blog_text %></p>
+      <p><%= safe_join(@blog.blog_text.split("\n"),tag(:br)) %></p>
     </div>
   </div>
 </div>
