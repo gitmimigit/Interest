@@ -3,6 +3,17 @@
   <div class="contents row">
     <div class="content_blog">
       <% if user_signed_in? && current_user.id == @blog.user_id %>
+      <div class="more">
+      <span><%= image_tag 'arrow_top.png' %></span>
+      <ul class="more_list">
+        <li>
+          <%= link_to '編集', edit_blog_path(@blog.id), method: :get %>
+        </li>
+        <li>
+          <%= link_to '削除', blog_path(@blog.id), method: :delete %>
+        </li>
+      </ul>
+      </div>
       <% end %>
       <p><%= @blog.blog_title %></p>
       <p><%= safe_join(@blog.blog_text.split("\n"),tag(:br)) %></p>
