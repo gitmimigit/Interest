@@ -1,9 +1,15 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:edit, :show,:update]
+  before_action :set_blog, only: [:edit, :show,:update, :destroy]
   before_action :set_user, only: [:update, :destroy]
 
   def create
-    Blog.create(blog_params)
+    @blog = Blog.new(blog_params)
+    if @blog.save
+      redirect_to blogs_path
+    else
+      @category = Category.new
+      render "posts/new"
+    end
   end
 
   def show
@@ -13,12 +19,17 @@ class BlogsController < ApplicationController
   end
 
   def update
-    @blog.update(blog_params)
+    if @blog.update(blog_params) 
+      redirect_to action: :update
+    else
+      render :edit
+    end
   end
 
   def destroy
-    blog = Blog.find(params[:id])
-    blog.destroy
+    if current_user.id == @blog.user_id
+    @blog.destroy
+    end
   end
 
   private
