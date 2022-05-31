@@ -15,6 +15,10 @@
       <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
-  
+  <div class="plaza_body">
+    <div class="contents row">
+      <%= render partial: "shared/blog", locals: { blog: @blog } %>
+    </div>
+  </div>
 <div>
 <%= render "shared/footer" %>

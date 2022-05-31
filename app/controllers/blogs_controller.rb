@@ -5,7 +5,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     if @blog.save
-      redirect_to blogs_path
+      
     else
       @category = Category.new
       render "posts/new"
