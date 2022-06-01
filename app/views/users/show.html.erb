@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 <div class='main'>
   <div class="contents row">
-    <%= render partial: "shared/blog", locals: { blog: @blog } %>
+    <%= render partial: "shared/blog", collection: @blogs %>
     <div class="post_list">
       <%= link_to "投稿一覧", user_lists_path(@user.id), class: "user_lists" %>
     </div>
