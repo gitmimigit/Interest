@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   def index
-    @blog = Blog.includes(:user, :category).order("created_at DESC")
+    @user = User.find(params[:user_id])
+    @blog = @user.blogs.order("created_at DESC")
   end
 end
