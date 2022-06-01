@@ -12,6 +12,9 @@
   </ul>
   </div>
   <% end %>
+  <div class="blog_image">
+    <%= image_tag blog.image.variant(resize: '500x500') if blog.image.attached? %>
+  </div>
   <p><%= blog.blog_title %></p>
   <p><%= safe_join(blog.blog_text.split("\n"),tag(:br)) %></p>
 </div>
