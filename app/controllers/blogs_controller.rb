@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:edit, :show,:update, :destroy]
-  before_action :set_user, only: 
+  before_action :set_user, only: :create
 
   def create
     @blog = Blog.new(blog_params)
@@ -44,6 +44,6 @@ class BlogsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 end
