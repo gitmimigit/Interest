@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:edit, :show,:update, :destroy]
-  before_action :set_user, only: :update
+  before_action :set_user, only: 
 
   def create
     @blog = Blog.new(blog_params)
@@ -19,8 +19,9 @@ class BlogsController < ApplicationController
   end
 
   def update
+    @user =User.find(@blog.user_id)
     if @blog.update(blog_params) 
-      redirect_to action: :update
+      
     else
       render :edit
     end
