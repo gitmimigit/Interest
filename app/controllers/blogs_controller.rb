@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:edit, :show,:update, :destroy]
-  before_action :set_user, only: [:update, :destroy]
+  before_action :set_user, only: :update
 
   def create
     @blog = Blog.new(blog_params)
@@ -27,6 +27,7 @@ class BlogsController < ApplicationController
   end
 
   def destroy
+    @user =User.find(@blog.user_id)
     if current_user.id == @blog.user_id
     @blog.destroy
     end
