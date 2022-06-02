@@ -12,6 +12,11 @@
   </ul>
   </div>
   <% end %>
+  <div class="image_content">
+    <% unless blog.image == "" %>
+      <img src="<%= blog.image %>" alt="" class=blog_image>
+    <%end%>
+  </div>
   <p><%= blog.blog_title %></p>
   <p><%= safe_join(blog.blog_text.split("\n"),tag(:br)) %></p>
 </div>
