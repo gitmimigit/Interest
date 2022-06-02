@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:edit, :show,:update, :destroy]
-  before_action :set_user, only: :create
+  #before_action :set_user, only: :create
 
   def create
     @blog = Blog.new(blog_params)
