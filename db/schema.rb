@@ -26,17 +26,11 @@ ActiveRecord::Schema.define(version: 2022_05_30_050244) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "category_name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "user_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_user_categories_on_category_id"
-    t.index ["user_id"], name: "index_user_categories_on_user_id"
+    t.index ["category_name", "user_id"], name: "index_categories_on_category_name_and_user_id", unique: true
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -54,6 +48,5 @@ ActiveRecord::Schema.define(version: 2022_05_30_050244) do
 
   add_foreign_key "blogs", "categories"
   add_foreign_key "blogs", "users"
-  add_foreign_key "user_categories", "categories"
-  add_foreign_key "user_categories", "users"
+  add_foreign_key "categories", "users"
 end

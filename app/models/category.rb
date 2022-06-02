@@ -1,7 +1,7 @@
 class Category < ApplicationRecord
-  has_many :user_categories
-  has_many :users, through: :user_categories
+  belongs_to :user
   has_many :blogs
 
   validates :category_name, presence: true
+  validates :category_name, uniqueness: { scope: :user_id }
 end

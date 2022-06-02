@@ -4,8 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :user_categories
-  has_many :categories, through: :user_categories
+  has_many :categories
   has_many :blogs
 
   validates :user_name, presence: true, length: { maximum: 8 }
