@@ -15,7 +15,7 @@
         <h3>ブログを投稿する</h3>
         <%= form_with(model: @blog, local: true) do |form| %> 
           <%= render 'shared/error_messages', model: form.object %>
-          <div class="blog_category">
+          <div class="select_category">
             <select name="category_id">
               <option value="">カテゴリーを選択してください</option>
               <% current_user.categories.each do |category| %>
@@ -25,19 +25,41 @@
           </div>
           <div class="img-upload">
             <p>GIF形式 (.gif）、JPEG形式（.jpg）、PNG形式（.png）※拡張子がない場合はつけてね！</p>
-            <%= form.text_field :image, placeholder: "Image Url", id:"item-image" %>
+            <%= form.text_field :blog_image, placeholder: "Image Url", id:"item-image" %>
           </div>
-          <div class="blog_title">
+          <div class="form_title">
             <%= form.text_field :blog_title, placeholder: "タイトル" %>
           </div>
-          <div class="blog_text">
+          <div class="form_text">
             <%= form.text_area :blog_text, placeholder: "内容" %>
           </div>
           <%= form.submit "SEND" %>
         <% end %>
       </div>
       <div class="container">
-        <h3>お気に入りを投稿する！</h3>
+        <h3>お気に入りを投稿する</h3>
+        <%= form_with(model: @favorite, local: true) do |form| %> 
+          <%= render 'shared/error_messages', model: form.object %>
+          <div class="select_category">
+            <select name="category_id">
+              <option value="">カテゴリーを選択してください</option>
+              <% current_user.categories.each do |category| %>
+                <option value=<%= category.id %>><%= category.category_name %></option>
+              <% end %>
+            </select>
+          </div>
+          <div class="img-upload">
+            <p>GIF形式 (.gif）、JPEG形式（.jpg）、PNG形式（.png）※拡張子がない場合はつけてね！</p>
+            <%= form.text_field :favorite_image, placeholder: "Image Url", id:"item-image" %>
+          </div>
+          <div class="form_title">
+            <%= form.text_field :favorite_name, placeholder: "名前" %>
+          </div>
+          <div class="form_text">
+            <%= form.text_area :favorite_profile, placeholder: "詳細" %>
+          </div>
+          <%= form.submit "SEND" %>
+        <% end %>
       </div>
     </div>
     <div class="contents row">
