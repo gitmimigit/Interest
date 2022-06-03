@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
   resources :categories, only: :create
   resources :blogs, only: [:create, :show, :edit, :update, :destroy]
+  resources :favorites, only: [:create, :show, :edit, :update, :destroy]
 end

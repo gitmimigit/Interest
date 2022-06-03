@@ -8,6 +8,7 @@ class BlogsController < ApplicationController
       
     else
       @category = Category.new
+      @favorite = Favorite.new
       render "posts/new"
     end
   end
