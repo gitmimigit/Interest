@@ -4,17 +4,20 @@
     <div class="contents row">
       <ul class='blog-lists'>
         <% @blog.each do |blog| %>
-        <li class='list'>
-          <%= link_to blog.blog_title, blog_path(blog.id), class: "blog" %>
-        </li>
+          <li class='list'>
+            <%= link_to blog.blog_title, blog_path(blog.id), class: "blog" %>
+          </li>
         <% end %>
       </ul>
       <ul class='favorite-lists'>
-        <%# @favorite.each do |favorite| %>
-        <li class='list'>
-          <%#= link_to favorite.favorite_name, new_user_session_path, class: "favorite" %>
-        </li>
-        <%# end %>
+        <% @favorite.each do |favorite| %>
+          <li class='list'>
+            <div class="image_content">
+              <img src="<%= favorite.favorite_image %>" alt="" class=list_image>
+            </div>
+            <%= link_to favorite.favorite_name, favorite_path(favorite.id), class: "favorite" %>
+          </li>
+        <% end %>
       </ul>
     </div>
     

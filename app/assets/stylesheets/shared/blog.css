@@ -1,11 +1,21 @@
-.blog_image{
+.index_image{
   width: 300px;
   height: 300px;
  }
+
+ .blog_header{
+   display: flex;
+   justify-content: space-around;
+ }
+
+ .blog_header p{
+  height: 30px;
+}
+
 .more {
   top: 20px;
   right: 30px;
-  height: 100px;
+  height: 30px;
   width: 80px;
   text-align: right;
 }

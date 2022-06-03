@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
       
     else
       @blog = Blog.new
+      @favorite = Favorite.new
       render "posts/new"
     end
   end
@@ -13,4 +14,5 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:category_name ).merge(user_id: current_user.id )
   end
+
 end

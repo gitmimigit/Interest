@@ -7,17 +7,43 @@
     <p class='service-explain'>
       Interestはだれでもかんたんに投稿できる
     </p>
-    <p class='service-explain'>
-      ブログアプリです
-    </p>
     <div class='store-btn'>
       <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>
       <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
     </div>
   </div>
   <div class="plaza_body">
-    <div class="contents row">
-      <%= render partial: "shared/blog", collection: @blogs %>
+    <div class="plaza_content">
+      <div class="new_content">新着ブログ</div>
+      <% @blogs.each do |blog| %>
+        <div class="index_blog">
+          <div class="image_content">
+            <% if blog.blog_image == "" %>
+              <%= image_tag"tasyumi_kiyoubinbou.png", class:"index_image" %>
+            <% else%>  
+              <img src="<%= blog.blog_image %>" alt="" class="index_image">
+            <%end%>
+          </div>
+          <div class="blog_header">
+            <p><%= link_to blog.blog_title, blog_path(blog.id) %></p>
+            <p>by.<%= link_to blog.user.user_name, user_path(blog.user.id) %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class='plaza_content'>
+      <div class="new_content">新着お気に入り</div>
+      <% @favorites.each do |favorite| %>
+        <div class="index_favorite">
+          <div class="image_content">
+            <img src="<%= favorite.favorite_image %>" alt="" class=list_image>
+          </div>
+          <div class="blog_header">
+          <p><%= link_to favorite.favorite_name, favorite_path(favorite.id), class: "favorite" %></p>
+          <p>by.<%= link_to favorite.user.user_name, user_path(favorite.user.id) %></p>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 <div>
