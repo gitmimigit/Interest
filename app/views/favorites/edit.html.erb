@@ -3,8 +3,8 @@
   <div class="post_body">
     <div class="contents row">
       <div class="container">
-        <h3>ブログを編集する</h3>
-        <%= form_with(model: @blog, local: true) do |form| %> 
+        <h3>お気に入りを編集する</h3>
+        <%= form_with(model: @favorite, local: true) do |form| %> 
           <div class="edit_category">
             <select name="category_id">
               <!--<option value="">カテゴリーを選択してください</option>-->
@@ -15,13 +15,13 @@
           </div>
           <div class="img-upload">
             <p>GIF形式 (.gif）、JPEG形式（.jpg）、PNG形式（.png）※拡張子がない場合はつけてね！</p>
-            <%= form.text_field :blog_image, placeholder: "Image Url", id:"item-image" %>
+            <%= form.text_field :favorite_image, placeholder: "Image Url", id:"item-image" %>
           </div>
-          <div class="blog_title">
-            <%= form.text_field :blog_title, placeholder: "タイトル" %>
+          <div class="form_title">
+            <%= form.text_field :favorite_name, placeholder: "名前" %>
           </div>
-          <div class="blog_text">
-            <%= form.text_area :blog_text, placeholder: "内容" %>
+          <div class="form_text">
+            <%= form.text_area :favorite_profile, placeholder: "詳細" %>
           </div>
           <%= form.submit "SEND" %>
         <% end %>

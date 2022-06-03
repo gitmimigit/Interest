@@ -18,6 +18,16 @@
   <div class="plaza_body">
     <div class="contents row">
       <%= render partial: "shared/blog", collection: @blogs %>
+      <ul class='favorite-lists'>
+        <% @favorite.each do |favorite| %>
+          <li class='list'>
+            <div class="image_content">
+              <img src="<%= favorite.favorite_image %>" alt="" class=list_image>
+            </div>
+            <%= link_to favorite.favorite_name, favorite_path(favorite.id), class: "favorite" %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 <div>
