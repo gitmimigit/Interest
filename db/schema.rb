@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_30_050244) do
+ActiveRecord::Schema.define(version: 2022_06_03_051102) do
 
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "blog_title", null: false
     t.text "blog_text", null: false
-    t.text "image"
+    t.text "blog_image"
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -31,6 +31,19 @@ ActiveRecord::Schema.define(version: 2022_05_30_050244) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_name", "user_id"], name: "index_categories_on_category_name_and_user_id", unique: true
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "favorite_name", null: false
+    t.text "favorite_profile", null: false
+    t.text "favorite_image", null: false
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_favorites_on_category_id"
+    t.index ["favorite_name", "user_id"], name: "index_favorites_on_favorite_name_and_user_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -49,4 +62,6 @@ ActiveRecord::Schema.define(version: 2022_05_30_050244) do
   add_foreign_key "blogs", "categories"
   add_foreign_key "blogs", "users"
   add_foreign_key "categories", "users"
+  add_foreign_key "favorites", "categories"
+  add_foreign_key "favorites", "users"
 end
