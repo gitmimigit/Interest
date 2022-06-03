@@ -2,3 +2,9 @@
   display: flex;
   justify-content: space-around;
 }
+
+.post_form{
+  background-color: white;
+  padding: 20px;
+  margin: 20px;
+}

@@ -1,5 +1,5 @@
 .main {
-  background: #f8f8f8;
+  background: lightgrey;
 }
 .title-contents {
   width: 100vw;
@@ -31,4 +31,31 @@
 
 .google-btn {
   height: 9vh;
+}
+
+.plaza_body{
+  display: flex;
+  justify-content: space-around;
+}
+
+.plaza_content{
+  
+}
+
+.new_content{
+  font-size: 40px;
+}
+
+.index_blog{
+  background: #f8f8f8;
+  height: 400px;
+  margin: 40px 0;
+  padding: 20px;
+}
+
+.index_favorite{
+  background: #f8f8f8;
+  height: 400px;
+  margin: 40px 0;
+  padding: 20px;
 }

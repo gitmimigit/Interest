@@ -2,7 +2,7 @@
 <div class='main'>
   <div class="post_body">
     <div class="contents row">
-      <div class="container">
+      <div class="post_form">
         <h3>新しくカテゴリーを作る</h3>
         <%= form_with(model: @category, local: true) do |form| %> 
           <%= render 'shared/error_messages', model: form.object %>
@@ -11,7 +11,7 @@
           <%= form.submit "SEND" %>
         <% end %>
       </div>
-      <div class="container">
+      <div class="post_form">
         <h3>ブログを投稿する</h3>
         <%= form_with(model: @blog, local: true) do |form| %> 
           <%= render 'shared/error_messages', model: form.object %>
@@ -36,7 +36,7 @@
           <%= form.submit "SEND" %>
         <% end %>
       </div>
-      <div class="container">
+      <div class="post_form">
         <h3>お気に入りを投稿する</h3>
         <%= form_with(model: @favorite, local: true) do |form| %> 
           <%= render 'shared/error_messages', model: form.object %>

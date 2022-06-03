@@ -1,7 +1,30 @@
 <%= render "shared/header" %>
 <div class='main'>
   <div class="contents row">
-    <%= render partial: "shared/blog", collection: @blogs %>
+    <div class="content_blog">
+      <% @blog.each do |blog| %>
+        <div class="image_content">
+          <% unless blog.blog_image == "" %>
+            <img src="<%= blog.blog_image %>" alt="" class=index_image>
+          <%end%>
+        </div>
+        <div class="blog_header">
+          <p><%= link_to blog.blog_title, blog_path(blog.id) %></p>
+        </div>
+        <p><%= safe_join(blog.blog_text.split("\n"),tag(:br)) %></p>
+      <% end %>
+    </div>
+    <div class="content_blog">
+      <% @favorite.each do |favorite| %>
+        <div class="image_content">
+          <img src="<%= favorite.favorite_image %>" alt="" class=index_image>
+        </div>
+        <div class="blog_header">
+          <p><%= link_to favorite.favorite_name, favorite_path(favorite.id) %></p>
+        </div>
+        <p><%= safe_join(favorite.favorite_profile.split("\n"),tag(:br)) %></p>
+      <% end %>
+    </div>
     <div class="post_list">
       <%= link_to "投稿一覧", user_lists_path(@user.id), class: "user_lists" %>
     </div>
