@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_03_051102) do
+ActiveRecord::Schema.define(version: 2022_06_06_085817) do
 
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "blog_title", null: false
@@ -46,6 +46,18 @@ ActiveRecord::Schema.define(version: 2022_06_03_051102) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "memos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "memo_title", null: false
+    t.text "memo_text", null: false
+    t.text "memo_image"
+    t.bigint "user_id", null: false
+    t.bigint "favorite_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["favorite_id"], name: "index_memos_on_favorite_id"
+    t.index ["user_id"], name: "index_memos_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -64,4 +76,6 @@ ActiveRecord::Schema.define(version: 2022_06_03_051102) do
   add_foreign_key "categories", "users"
   add_foreign_key "favorites", "categories"
   add_foreign_key "favorites", "users"
+  add_foreign_key "memos", "favorites"
+  add_foreign_key "memos", "users"
 end

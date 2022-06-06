@@ -1,6 +1,7 @@
 class Favorite < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  has_many :memos
 
   validates :favorite_name,     presence: true
   validates :favorite_profile,  presence: true
