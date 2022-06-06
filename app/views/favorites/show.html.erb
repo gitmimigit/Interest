@@ -14,6 +14,9 @@
                 <%= link_to '編集', edit_favorite_path(@favorite.id), method: :get %>
               </li>
               <li>
+                <%= link_to 'メモ', new_favorite_memo_path(@favorite.id), method: :get %>
+              </li>
+              <li>
                 <%= link_to '削除', favorite_path(@favorite.id), method: :delete %>
               </li>
             </ul>
