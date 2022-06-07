@@ -25,6 +25,24 @@
       </div>
       <p><%= safe_join(@favorite.favorite_profile.split("\n"),tag(:br)) %></p>
     </div>
+    <div class="memos">
+      <h4>＜メモ一覧＞</h4>
+      <% @memos.each do |memo| %>
+        <div class="content_memo">
+          <div class="image_content">
+            <% if memo.memo_image == "" %>
+              <%= image_tag"tasyumi_kiyoubinbou.png", class:"index_image" %>
+            <% else%>  
+              <img src="<%= memo.memo_image %>" alt="" class="index_image">
+            <%end%>
+          </div>
+          <div class="memo_header">
+            <p><%= memo.memo_title %></p>
+          </div>
+          <p><%= safe_join(memo.memo_text.split("\n"),tag(:br)) %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 <%= render "shared/footer" %>
