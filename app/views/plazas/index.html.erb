@@ -14,6 +14,10 @@
   </div>
   <div class="plaza_body">
     <div class="plaza_content">
+    <div class="plaza_chart">
+      <%= pie_chart @blogs_category.count%>
+      <%#= pie_chart Category.group(:category_name).count%>
+    </div>
       <div class="new_content">新着ブログ</div>
       <% @blogs.each do |blog| %>
         <div class="index_blog">
@@ -32,6 +36,10 @@
       <% end %>
     </div>
     <div class='plaza_content'>
+    <div class="plaza_chart">
+      <%= pie_chart @favorite_category.count%>
+      <%#= pie_chart Category.group(:category_name).count%>
+    </div>
       <div class="new_content">新着お気に入り</div>
       <% @favorites.each do |favorite| %>
         <div class="index_favorite">
