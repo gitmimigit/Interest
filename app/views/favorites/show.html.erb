@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 <div class='main'>
-  <div class="contents row">
-    <div class="content_blog">
+  <div class="favorite_body">
+    <div class="content_favorite">
       <div class="image_content">
         <img src="<%= @favorite.favorite_image %>" alt="" class=index_image>
       </div>
@@ -24,6 +24,7 @@
         <% end %>
       </div>
       <p><%= safe_join(@favorite.favorite_profile.split("\n"),tag(:br)) %></p>
+      <div class="day"><%= l @favorite.created_at %></div>
     </div>
     <div class="memos">
       <h4>＜メモ一覧＞</h4>
@@ -31,7 +32,7 @@
         <div class="content_memo">
           <div class="image_content">
             <% if memo.memo_image == "" %>
-              <%= image_tag"tasyumi_kiyoubinbou.png", class:"index_image" %>
+              <%#= image_tag"tasyumi_kiyoubinbou.png", class:"index_image" %>
             <% else%>  
               <img src="<%= memo.memo_image %>" alt="" class="index_image">
             <%end%>
@@ -40,6 +41,7 @@
             <p><%= memo.memo_title %></p>
           </div>
           <p><%= safe_join(memo.memo_text.split("\n"),tag(:br)) %></p>
+          <div class="day"><%= l memo.created_at %></div>
         </div>
       <% end %>
     </div>
