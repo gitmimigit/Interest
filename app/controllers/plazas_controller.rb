@@ -5,6 +5,6 @@ class PlazasController < ApplicationController
     @blogs_category = Category.joins(:blogs).group(:category_name).count
     @favorite_category = Category.joins(:favorites).group(:category_name).count
     @memo_category = Category.joins(favorites: :memos).group(:category_name).count
-    @favorite_categories = @favorite_category.merge(@memo_category)
+    @favorite_categories = @favorite_category.merge(@memo_category){|key, v1, v2| v1 + v2}
   end
 end
