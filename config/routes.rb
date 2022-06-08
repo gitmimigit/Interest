@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :categories, only: :create
   resources :blogs, only: [:create, :show, :edit, :update, :destroy]
   resources :favorites, only: [:create, :show, :edit, :update, :destroy] do
-    resources :memos, only: [:new, :create, :edit, :update, :destroy]
+    resources :memos, only: [:show, :new, :create, :edit, :update, :destroy]
   end
 end

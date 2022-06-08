@@ -1,0 +1,24 @@
+<%= render "shared/header" %>
+<div class='main'>
+  <div class="post_body">
+    <div class="contents row">
+      <div class="container">
+        <h3>メモを編集する</h3>
+        <%= form_with(model:[@favorite, @memo], local: true) do |form| %> 
+          <div class="img-upload">
+            <p>GIF形式 (.gif）、JPEG形式（.jpg）、PNG形式（.png）※拡張子がない場合はつけてね！</p>
+            <%= form.text_field :memo_image, placeholder: "Image Url", id:"item-image" %>
+          </div>
+          <div class="form_title">
+            <%= form.text_field :memo_title, placeholder: "タイトル" %>
+          </div>
+          <div class="form_text">
+            <%= form.text_area :memo_text, placeholder: "内容" %>
+          </div>
+          <%= form.submit "SEND" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "shared/footer" %>

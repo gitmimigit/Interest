@@ -2,8 +2,9 @@ class PlazasController < ApplicationController
   def index
     @blogs =Blog.order(updated_at: :desc).limit(3)
     @favorites =Favorite.order(updated_at: :desc).limit(3)
-    #@blog =Blog.find(4)
-    @blogs_category = Blog.joins(:category).group("category_name")
-    @favorite_category = Favorite.joins(:category).group("category_name")
+    @blogs_category = Category.joins(:blogs).group(:category_name).count
+    @favorite_category = Category.joins(:favorites).group(:category_name).count
+    @memo_category = Category.joins(favorites: :memos).group(:category_name).count
+    @favorite_categories = @favorite_category.merge(@memo_category)
   end
 end

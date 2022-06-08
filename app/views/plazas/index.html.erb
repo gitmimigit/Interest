@@ -15,7 +15,7 @@
   <div class="plaza_body">
     <div class="plaza_content">
     <div class="plaza_chart">
-      <%= pie_chart @blogs_category.count%>
+      <%= pie_chart @blogs_category%>
       <%#= pie_chart Category.group(:category_name).count%>
     </div>
       <div class="new_content">新着ブログ</div>
@@ -37,7 +37,7 @@
     </div>
     <div class='plaza_content'>
     <div class="plaza_chart">
-      <%= pie_chart @favorite_category.count%>
+      <%= pie_chart @favorite_categories%>
       <%#= pie_chart Category.group(:category_name).count%>
     </div>
       <div class="new_content">新着お気に入り</div>
