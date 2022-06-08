@@ -1,10 +1,12 @@
 <%= render "shared/header" %>
 <div class='main'>
-  <div class="contents row">
+  <div class="blog_body">
     <div class="content_blog">
       <div class="image_content">
-        <% unless @blog.blog_image == "" %>
-          <img src="<%= @blog.blog_image %>" alt="" class=index_image>
+        <% if @blog.blog_image == "" %>
+          <%= image_tag"tasyumi_kiyoubinbou.png", class:"index_image" %>
+        <% else%>  
+          <img src="<%= @blog.blog_image %>" alt="" class="index_image">
         <%end%>
       </div>
       <div class="blog_header">
@@ -23,6 +25,7 @@
         <% end %>
       </div>
       <p><%= safe_join(@blog.blog_text.split("\n"),tag(:br)) %></p>
+      <div class="day"><%= l @blog.created_at %></div>
     </div>
   </div>
 </div>

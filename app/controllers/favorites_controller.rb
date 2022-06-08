@@ -14,6 +14,7 @@ class FavoritesController < ApplicationController
   end
 
   def show
+    @memos = @favorite.memos.includes(:user)
   end
 
   def edit

@@ -1,6 +1,10 @@
 <%= render "shared/header" %>
 <div class='main'>
   <div class="contents row">
+    <div class="user_chart">
+      <%= pie_chart @categories%>
+      <%#= pie_chart Category.group(:category_name).count%>
+    </div>
     <div class="content_blog">
       <% @blog.each do |blog| %>
         <div class="image_content">

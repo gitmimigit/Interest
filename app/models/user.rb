@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :categories
   has_many :blogs
   has_many :favorites
+  has_many :memos
 
   validates :user_name, presence: true, length: { maximum: 8 }
 end
