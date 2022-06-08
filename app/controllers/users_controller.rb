@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     #@favorite = Favorite.find(params[:id])
     @blog_categories = @user.categories.joins(:blogs).group(:category_name).count
     @favorite_categories = @user.categories.joins(:favorites).group(:category_name).count
-    @memo_categories = @user.categories.joins(favorites: :memos).group(:category_name).count
+    @memo_categories = @user.memos.joins(favorite: :category).group(:category_name).count
     @categories = @blog_categories.merge(@favorite_categories, @memo_categories) 
+    #@categories = @memo_categories
   end
 end
