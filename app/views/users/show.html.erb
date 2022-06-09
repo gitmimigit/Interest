@@ -1,36 +1,58 @@
 <%= render "shared/header" %>
 <div class='main'>
   <div class="contents row">
-    <div class="user_chart">
-      <%= pie_chart @categories%>
-      <%#= pie_chart Category.group(:category_name).count%>
-    </div>
-    <div class="content_blog">
-      <% @blog.each do |blog| %>
-        <div class="image_content">
-          <% unless blog.blog_image == "" %>
-            <img src="<%= blog.blog_image %>" alt="" class=index_image>
+    <div class="user_profile">
+      <div class="user_left">
+        <% if @profile == nil %>
+          <%= image_tag"tasyumi_kiyoubinbou.png", class:"user_image" %>
+        <% else%>  
+          <img src="<%= @profile.favorite_image %>" alt="" class="user_image">
+        <%end%>
+      </div>
+      <div class="user_light">
+        <div class="user_chart">
+          <%= pie_chart @categories%>
+        </div>
+        <div class="myname">
+          <%= @user.user_name %>
+        </div>
+        <div class="mytext">
+          <% unless @profile == nil %>
+            <%= @profile.favorite_profile %>
           <%end%>
         </div>
-        <div class="blog_header">
-          <p><%= link_to blog.blog_title, blog_path(blog.id) %></p>
-        </div>
-        <p><%= safe_join(blog.blog_text.split("\n"),tag(:br)) %></p>
-      <% end %>
+      </div>
     </div>
-    <div class="content_blog">
-      <% @favorite.each do |favorite| %>
-        <div class="image_content">
-          <img src="<%= favorite.favorite_image %>" alt="" class=index_image>
-        </div>
-        <div class="blog_header">
-          <p><%= link_to favorite.favorite_name, favorite_path(favorite.id) %></p>
-        </div>
-        <p><%= safe_join(favorite.favorite_profile.split("\n"),tag(:br)) %></p>
-      <% end %>
-    </div>
-    <div class="post_list">
-      <%= link_to "投稿一覧", user_lists_path(@user.id), class: "user_lists" %>
+    <div class="user_content">
+      <div class="user_blogs">
+        <% @blog.each do |blog| %>
+          <div class="u_b_image">
+            <% if blog.blog_image == "" %>
+              <%= image_tag"tasyumi_kiyoubinbou.png", class:"u_b_i_content" %>
+            <%else%>
+              <img src="<%= blog.blog_image %>" alt="" class="u_b_i_content">
+            <%end%>
+          </div>
+          <div class="u_b_content">
+            <div class="u_b_title"><%= link_to blog.blog_title, blog_path(blog.id), class:"u_b_link" %></div>
+            <div class="u_b_text"><%= safe_join(blog.blog_text.split("\n"),tag(:br)) %></div>
+          </div>
+        <% end %>
+      </div>
+      <div class="user_favorites">
+        <% @favorite.each do |favorite| %>
+          <div class="image_content">
+            <img src="<%= favorite.favorite_image %>" alt="" class=index_image>
+          </div>
+          <div class="blog_header">
+            <p><%= link_to favorite.favorite_name, favorite_path(favorite.id) %></p>
+          </div>
+          <p><%= safe_join(favorite.favorite_profile.split("\n"),tag(:br)) %></p>
+        <% end %>
+      </div>
+      <div class="user_posts">
+        <%= link_to "投稿一覧", user_lists_path(@user.id), class: "user_lists" %>
+      </div>
     </div>
   </div>
 </div>

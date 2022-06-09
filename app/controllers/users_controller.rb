@@ -5,6 +5,8 @@ class UsersController < ApplicationController
     @favorite = @user.favorites.order(updated_at: :desc).limit(1)
     #@blog = Blog.find(params[:id])
     #@favorite = Favorite.find(params[:id])
+    @profile = @user.favorites.joins(:category).order(updated_at: :desc).find_by(categories:{category_name:"プロフィール"})
+    #@profile = @user.favorites.find(1)
     @blog_categories = @user.categories.joins(:blogs).group(:category_name).count
     @favorite_categories = @user.categories.joins(:favorites).group(:category_name).count
     @memo_categories = @user.memos.joins(favorite: :category).group(:category_name).count
