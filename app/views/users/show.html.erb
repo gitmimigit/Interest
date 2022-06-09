@@ -41,8 +41,8 @@
       </div>
       <div class="user_favorites">
         <% @favorite.each do |favorite| %>
-          <div class="image_content">
-            <img src="<%= favorite.favorite_image %>" alt="" class=index_image>
+          <div class="u_f_image">
+            <img src="<%= favorite.favorite_image %>" alt="" class="u_f_i_content">
           </div>
           <div class="blog_header">
             <p><%= link_to favorite.favorite_name, favorite_path(favorite.id) %></p>

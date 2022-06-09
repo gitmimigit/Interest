@@ -46,6 +46,10 @@
 .user_favorites{
   background-color: white;
 }
+.u_f_i_content{
+  width: 300px;
+  height: 300px;
+}
 
 .user_posts{
   background-color: white;
